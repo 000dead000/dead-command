@@ -1,0 +1,11 @@
+graft *
+prune .hg
+prune .hgignore
+prune .ropeproject
+prune .git
+prune .gitignore
+include LICENSE
+include README.md
+
+recursive-include dead_command/dependencies *
+recursive-include dead_command/fixtures *
