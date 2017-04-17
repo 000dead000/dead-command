@@ -4,9 +4,9 @@ import os
 
 from .common import Common
 from .exceptions import DEADException
+from .os_dependencies import OSDependenciesCommand
+from .pip_dependencies import PIPDependenciesCommand
 # from .bower_dependencies import DARCommandCommandsBower
-# from os_dependencies import DARCommandCommandsOS
-# from pip_dependencies import DARCommandCommandsPIP
 
 
 class StartprojectCommand(Common):
@@ -100,8 +100,8 @@ class StartprojectCommand(Common):
         self.goto_project_directory()
         self.create_django_project()
         # self.export_skeleton()
-        # self.install_os_dependencies()
-        # self.install_pip_dependencies()
+        self.os_dependencies()
+        self.pip_dependencies()
         # self.install_bower()
 
     def create_project_directory(self):
@@ -164,13 +164,11 @@ class StartprojectCommand(Common):
         # self.remove_directory(dar_skeleton_dir)
         pass
 
-    def install_os_dependencies(self):
-        # DARCommandCommandsOS(self.args).execute()
-        pass
+    def os_dependencies(self):
+        OSDependenciesCommand(self.args).execute()
 
-    def install_pip_dependencies(self):
-        # DARCommandCommandsPIP(self.args).execute()
-        pass
+    def pip_dependencies(self):
+        PIPDependenciesCommand(self.args).execute()
 
     def install_bower(self):
         # DARCommandCommandsBower(self.args).execute()

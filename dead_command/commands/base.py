@@ -3,6 +3,9 @@
 from .common import Common
 
 from .startproject import StartprojectCommand
+from .os_dependencies import OSDependenciesCommand
+from .pip_dependencies import PIPDependenciesCommand
+
 # from .bower_dependencies import DARCommandCommandsBower
 # from .os_dependencies import DARCommandCommandsOS
 # from .pip_dependencies import DARCommandCommandsPIP
@@ -19,12 +22,18 @@ class Commands(Common):
         self.subparsers = subparsers
         self.register_commands()
 
+    @staticmethod
+    def get_commands_list():
+        return [
+            StartprojectCommand,
+            OSDependenciesCommand,
+            PIPDependenciesCommand,
+        ]
+
     def register_commands(self):
         """ Register each command class to subparser
         """
-        commands_classes = [
-            StartprojectCommand,
-        ]
+        commands_classes = self.get_commands_list()
 
         for command_class in commands_classes:
             definition = command_class.get_definition()
@@ -56,7 +65,7 @@ class Commands(Common):
         """
         subparser_name = args.subparser_name
 
-        for command_class in self.commands_list:
+        for command_class in self.get_commands_list():
             definition = command_class.get_definition()
             name = definition.get("name")
 
