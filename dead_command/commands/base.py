@@ -5,6 +5,7 @@ from .common import Common
 from .startproject import StartprojectCommand
 from .os_dependencies import OSDependenciesCommand
 from .pip_dependencies import PIPDependenciesCommand
+from .update_package import UpdatePackageCommand
 
 # from .bower_dependencies import DARCommandCommandsBower
 # from .os_dependencies import DARCommandCommandsOS
@@ -28,6 +29,7 @@ class Commands(Common):
             StartprojectCommand,
             OSDependenciesCommand,
             PIPDependenciesCommand,
+            UpdatePackageCommand,
         ]
 
     def register_commands(self):

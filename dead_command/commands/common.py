@@ -6,7 +6,7 @@ import subprocess
 
 
 class Common(object):
-    DAR_COMMAND_PACKAGE = "git+https://github.com/000dead000/dead-command.git"
+    DEAD_COMMAND_PACKAGE = "git+https://github.com/000dead000/dead-command.git"
     DEFAULT_PORT = 9500
 
     @staticmethod

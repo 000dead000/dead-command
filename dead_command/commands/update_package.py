@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 
-import os
-
-from ..common import DARCommandCommon
+from .common import Common
 
 
-class DARCommandCommandsUpdatePackage(DARCommandCommon):
+class UpdatePackageCommand(Common):
     def __init__(self, args):
         """ Constructor
         """
@@ -32,6 +30,6 @@ class DARCommandCommandsUpdatePackage(DARCommandCommon):
             "pip",
             "install",
             "-U",
-            self.DAR_COMMAND_PACKAGE,
+            self.DEAD_COMMAND_PACKAGE,
         ]
         self.run_command(command_arguments)
