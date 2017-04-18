@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import os
+
 from .common import Common
 
 
@@ -41,4 +43,5 @@ class MigrationsCommand(Common):
         #     "migrate",
         # ]
         # self.run_command(command_arguments)
-        print "El hijo de florentina"
+
+        print "El hijo de florentina, ", os.pwd()
