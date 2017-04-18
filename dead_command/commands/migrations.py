@@ -39,7 +39,9 @@ class MigrationsCommand(Common):
 
         if not os.path.isfile(manage):
             raise DEADException({
-                "message": "manage.py is not in the current location"
+                "message": "{} is not in the current location".format(
+                    manage
+                )
             })
 
         command_arguments = [

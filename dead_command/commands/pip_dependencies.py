@@ -3,6 +3,7 @@
 import os
 
 from .common import Common
+from .exceptions import DEADException
 
 
 class PIPDependenciesCommand(Common):
@@ -45,16 +46,23 @@ class PIPDependenciesCommand(Common):
         self.run_command(command_arguments)
 
         pip_file = os.path.join(
-            self.get_instance_dir(),
-            "dependencies",
+            self.get_current_dir(),
             "requirements.txt"
         )
 
         if os.path.isfile(pip_file):
-            command_arguments = [
-                "pip",
-                "install",
-                "-U",
-                "-r",
-                pip_file
-            ]
+            raise DEADException({
+                "message": "{} is not in the current location".format(
+                    pip_file
+                )
+            })
+
+        command_arguments = [
+            "pip",
+            "install",
+            "-U",
+            "-r",
+            pip_file
+        ]
+
+        self.run_command(command_arguments)
