@@ -30,16 +30,22 @@ class MigrationsCommand(Common):
     def execute(self):
         """ Execute
         """
+
+        manage = os.path.join(
+            self.get_instance_dir(),
+            "manage.py"
+        )
+
         command_arguments = [
             "python",
-            "manage.py",
+            manage,
             "makemigrations",
         ]
         self.run_command(command_arguments)
 
         command_arguments = [
             "python",
-            "manage.py",
+            manage,
             "migrate",
         ]
         self.run_command(command_arguments)
