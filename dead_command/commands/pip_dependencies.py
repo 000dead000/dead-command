@@ -51,18 +51,12 @@ class PIPDependenciesCommand(Common):
         )
 
         if os.path.isfile(pip_file):
-            raise DEADException({
-                "message": "{} is not in the current location".format(
-                    pip_file
-                )
-            })
+            command_arguments = [
+                "pip",
+                "install",
+                "-U",
+                "-r",
+                pip_file
+            ]
 
-        command_arguments = [
-            "pip",
-            "install",
-            "-U",
-            "-r",
-            pip_file
-        ]
-
-        self.run_command(command_arguments)
+            self.run_command(command_arguments)
