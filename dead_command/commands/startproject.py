@@ -16,6 +16,7 @@ class StartprojectCommand(Common):
     DEFAULT_OVERWRITE = False
     DJANGO_ADMIN = "django-admin.py"
     SKELETON_REPO = "https://github.com/000dead000/dead-skeleton.git"
+    DEFAULT_SLUG = "dead"
     DEFAULT_SHORT_TITLE = "DEAD"
     DEFAULT_LONG_TITLE = "DEAD Project"
     DEFAULT_DOMAIN = "dead.000cortazar000.pes"
@@ -108,7 +109,7 @@ class StartprojectCommand(Common):
         self.export_skeleton()
         self.os_dependencies()
         self.pip_dependencies()
-        # self.install_bower()
+        self.bower_dependencies()
 
     def create_project_directory(self):
         """ Create the project directory
@@ -195,13 +196,13 @@ except IOError:
         contents = f.read()
         f.close()
 
-        contents = contents.replace("SLUG_PLACEHOLDER", self.slug)
-        contents = contents.replace("SHORT_TITLE_PLACEHOLDER", self.short_title)
-        contents = contents.replace("LONG_TITLE_PLACEHOLDER", self.long_title)
-        contents = contents.replace("DOMAIN_PLACEHOLDER", self.domain)
-        contents = contents.replace("EMAIL_USER_PLACEHOLDER", self.email)
-        contents = contents.replace("EMAIL_PASSWORD_PLACEHOLDER", self.password)
-        contents = contents.replace("EMAIL_BCC_RECIPIENT_PLACEHOLDER", self.email_bcc_recipient)
+        contents = contents.replace("SLUG_PLACEHOLDER", self.DEFAULT_SLUG)
+        contents = contents.replace("SHORT_TITLE_PLACEHOLDER", self.DEFAULT_SHORT_TITLE)
+        contents = contents.replace("LONG_TITLE_PLACEHOLDER", self.DEFAULT_LONG_TITLE)
+        contents = contents.replace("DOMAIN_PLACEHOLDER", self.DEFAULT_DOMAIN)
+        contents = contents.replace("EMAIL_USER_PLACEHOLDER", self.DEFAULT_EMAIL)
+        contents = contents.replace("EMAIL_PASSWORD_PLACEHOLDER", self.DEFAULT_PASSWORD)
+        contents = contents.replace("EMAIL_BCC_RECIPIENT_PLACEHOLDER", self.DEFAULT_EMAIL_BCC_RECIPIENT)
 
         f = open(settings, "w")
         f.write(contents)
@@ -234,5 +235,5 @@ except IOError:
     def pip_dependencies(self):
         PIPDependenciesCommand(self.args).execute()
 
-    def install_bower(self):
+    def bower_dependencies(self):
         BowerDependenciesCommand(self.args).execute()
