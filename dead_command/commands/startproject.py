@@ -16,11 +16,17 @@ class StartprojectCommand(Common):
     DEFAULT_OVERWRITE = False
     DJANGO_ADMIN = "django-admin.py"
     SKELETON_REPO = "https://github.com/000dead000/dead-skeleton.git"
+    DEFAULT_SHORT_TITLE = "DEAD"
+    DEFAULT_LONG_TITLE = "DEAD Project"
+    DEFAULT_DOMAIN = "dead.000cortazar000.pes"
+    DEFAULT_EMAIL = "dead@000cortazar000.pes"
+    DEFAULT_PASSWORD = "12345"
+    DEFAULT_EMAIL_BCC_RECIPIENT = "info@000cortazar000.pes"
 
     def __init__(self, args):
         """ Constructor
         """
-        self.DEFAULT_BASEDIR = self.get_current_dir()
+        self.DEFAULT_BASEDIR = self.get_instance_dir()
 
         self.args = args
 
@@ -179,7 +185,6 @@ except IOError:
         f.write(contents)
         f.close()
 
-        """
         settings = os.path.join(
             self.project_directory,
             "conf",
@@ -201,7 +206,6 @@ except IOError:
         f = open(settings, "w")
         f.write(contents)
         f.close()
-        """
 
     def export_skeleton(self):
         """ Export dar-skeleton to the project
@@ -232,4 +236,3 @@ except IOError:
 
     def install_bower(self):
         BowerDependenciesCommand(self.args).execute()
-

@@ -26,6 +26,16 @@ class Common(object):
         return dead_command_dir
 
     @staticmethod
+    def other_package_dir(name):
+        package_dir = Common.get_package_dir()
+        site_packages_dir = Common.go_uplevel(package_dir)
+
+        return os.path.join(
+            site_packages_dir,
+            name
+        )
+
+    @staticmethod
     def directory_exists(path):
         return os.path.isdir(path)
 

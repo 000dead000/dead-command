@@ -41,17 +41,32 @@ class BowerDependenciesCommand(Common):
             "bower.json"
         ]
 
-        for file_to_check in files_to_check:
-            ftc = os.path.join(
-                self.get_current_dir(),
-                file_to_check
-            )
+        current_directory = self.get_current_dir()
 
-            if not os.path.isfile(file_to_check):
-                raise DEADException({
-                    "message": "{} not exists".format(
-                        ftc
-                    )
-                })
+        dead_common = os.path.join(
+            self.other_package_dir("dead_common"),
+            "static",
+            "dead-common"
+        )
 
-        self.run_command(command_arguments)
+        paths = [
+            current_directory,
+            dead_common,
+        ]
+
+        for path in paths:
+            found = True
+            for file_to_check in files_to_check:
+                ftc = os.path.join(
+                    path,
+                    file_to_check
+                )
+
+                if not os.path.isfile(ftc):
+                    found = False
+
+            if found:
+                self.goto_directory(path)
+                self.run_command(command_arguments)
+
+        self.goto_directory(current_directory)
