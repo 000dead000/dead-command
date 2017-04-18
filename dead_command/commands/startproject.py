@@ -99,7 +99,7 @@ class StartprojectCommand(Common):
         self.create_project_directory()
         self.goto_project_directory()
         self.create_django_project()
-        # self.export_skeleton()
+        self.export_skeleton()
         self.os_dependencies()
         self.pip_dependencies()
         # self.install_bower()
