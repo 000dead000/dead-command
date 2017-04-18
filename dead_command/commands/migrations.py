@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import os
-
 from .common import Common
 
 
