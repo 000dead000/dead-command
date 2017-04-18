@@ -169,10 +169,11 @@ class StartprojectCommand(Common):
         f.close()
 
         contents += """
-    try:
-        execfile(os.path.join(BASE_DIR, 'conf', 'custom_settings.py'))
-    except IOError:
-        pass"""
+try:
+    execfile(os.path.join(BASE_DIR, 'conf', 'custom_settings.py'))
+except IOError:
+    pass
+        """
 
         f = open(settings, "w")
         f.write(contents)
