@@ -6,7 +6,7 @@ from .common import Common
 from .exceptions import DEADException
 from .os_dependencies import OSDependenciesCommand
 from .pip_dependencies import PIPDependenciesCommand
-# from .bower_dependencies import DARCommandCommandsBower
+from .bower_dependencies import BowerDependenciesCommand
 
 
 class StartprojectCommand(Common):
@@ -231,6 +231,5 @@ except IOError:
         PIPDependenciesCommand(self.args).execute()
 
     def install_bower(self):
-        # DARCommandCommandsBower(self.args).execute()
-        pass
+        BowerDependenciesCommand(self.args).execute()
 
