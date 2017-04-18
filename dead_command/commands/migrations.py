@@ -30,18 +30,16 @@ class MigrationsCommand(Common):
     def execute(self):
         """ Execute
         """
-        # command_arguments = [
-        #     "python",
-        #     "manage.py",
-        #     "makemigrations",
-        # ]
-        # self.run_command(command_arguments)
-        #
-        # command_arguments = [
-        #     "python",
-        #     "manage.py",
-        #     "migrate",
-        # ]
-        # self.run_command(command_arguments)
+        command_arguments = [
+            "python",
+            "manage.py",
+            "makemigrations",
+        ]
+        self.run_command(command_arguments)
 
-        print "El hijo de florentina, ", os.getcwd()
+        command_arguments = [
+            "python",
+            "manage.py",
+            "migrate",
+        ]
+        self.run_command(command_arguments)
