@@ -2,10 +2,10 @@
 
 import os
 
-from ..common import DARCommandCommon
+from .common import Common
 
 
-class DARCommandCommandsMigrations(DARCommandCommon):
+class MigrationsCommand(Common):
     def __init__(self, args):
         """ Constructor
         """
@@ -18,7 +18,7 @@ class DARCommandCommandsMigrations(DARCommandCommon):
             ```bash
             # This runs makemigrations and migrate
              
-            dar-command.py migrate
+            dead-command.py migrate
             ```
         """
         return {

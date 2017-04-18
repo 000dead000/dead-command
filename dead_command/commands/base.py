@@ -6,15 +6,7 @@ from .startproject import StartprojectCommand
 from .os_dependencies import OSDependenciesCommand
 from .pip_dependencies import PIPDependenciesCommand
 from .update_package import UpdatePackageCommand
-
-# from .bower_dependencies import DARCommandCommandsBower
-# from .os_dependencies import DARCommandCommandsOS
-# from .pip_dependencies import DARCommandCommandsPIP
-# from .update_package import DARCommandCommandsUpdatePackage
-# from .migrations import DARCommandCommandsMigrations
-# from .liveserver import DARCommandCommandsLive
-# from .create_system_users import DARCommandCommandsSystemUsers
-
+from .migrations import MigrationsCommand
 
 class Commands(Common):
     def __init__(self, subparsers):
@@ -30,6 +22,7 @@ class Commands(Common):
             OSDependenciesCommand,
             PIPDependenciesCommand,
             UpdatePackageCommand,
+            MigrationsCommand,
         ]
 
     def register_commands(self):
