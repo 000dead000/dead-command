@@ -44,4 +44,4 @@ class MigrationsCommand(Common):
         # ]
         # self.run_command(command_arguments)
 
-        print "El hijo de florentina, ", os.pwd()
+        print "El hijo de florentina, ", os.curdir()
