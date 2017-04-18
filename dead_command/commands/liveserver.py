@@ -2,10 +2,11 @@
 
 import os
 
-from ..common import DARCommandCommon
+from .common import Common
+from .exceptions import DEADException
 
 
-class DARCommandCommandsLive(DARCommandCommon):
+class LiveserverCommand(Common):
     def __init__(self, args):
         """ Constructor
         """
@@ -30,9 +31,21 @@ class DARCommandCommandsLive(DARCommandCommon):
     def execute(self):
         """ Execute
         """
+        manage = os.path.join(
+            self.get_current_dir(),
+            "manage.py"
+        )
+
+        if not os.path.isfile(manage):
+            raise DEADException({
+                "message": "{} is not in the current location".format(
+                    manage
+                )
+            })
+
         command_arguments = [
             "python",
-            "manage.py",
+            manage,
             "runserver",
             "0.0.0.0:{}".format(self.DEFAULT_PORT),
         ]

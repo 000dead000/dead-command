@@ -9,6 +9,7 @@ from .update_package import UpdatePackageCommand
 from .migrations import MigrationsCommand
 from .bower_dependencies import BowerDependenciesCommand
 from .system_users import SystemUsersCommand
+from .liveserver import LiveserverCommand
 
 
 class Commands(Common):
@@ -28,6 +29,7 @@ class Commands(Common):
             MigrationsCommand,
             BowerDependenciesCommand,
             SystemUsersCommand,
+            LiveserverCommand,
         ]
 
     def register_commands(self):
