@@ -2,10 +2,11 @@
 
 import os
 
-from ..common import DARCommandCommon
+from .common import Common
+from .exceptions import DEADException
 
 
-class DARCommandCommandsSystemUsers(DARCommandCommon):
+class SystemUsersCommand(Common):
     def __init__(self, args):
         """ Constructor
         """
@@ -22,7 +23,7 @@ class DARCommandCommandsSystemUsers(DARCommandCommon):
             ```
         """
         return {
-            "name": "create_system_users",
+            "name": "system_users",
             "description": """Create system users (admin, system, prueba)""",
             "arguments": [],
         }
@@ -36,9 +37,22 @@ class DARCommandCommandsSystemUsers(DARCommandCommon):
             "users.json"
         )
 
+        manage = os.path.join(
+            self.get_current_dir(),
+            "manage.py"
+        )
+
+        if not os.path.isfile(manage) or not os.path.isfile(users):
+            raise DEADException({
+                "message": "{} or {} are not in the current location".format(
+                    manage,
+                    users
+                )
+            })
+
         command_arguments = [
             "python",
-            "manage.py",
+            manage,
             "loaddata",
             users,
         ]

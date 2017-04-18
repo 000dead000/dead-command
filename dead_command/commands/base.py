@@ -8,6 +8,7 @@ from .pip_dependencies import PIPDependenciesCommand
 from .update_package import UpdatePackageCommand
 from .migrations import MigrationsCommand
 from .bower_dependencies import BowerDependenciesCommand
+from .system_users import SystemUsersCommand
 
 
 class Commands(Common):
@@ -26,6 +27,7 @@ class Commands(Common):
             UpdatePackageCommand,
             MigrationsCommand,
             BowerDependenciesCommand,
+            SystemUsersCommand,
         ]
 
     def register_commands(self):
