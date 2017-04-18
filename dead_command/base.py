@@ -2,7 +2,7 @@
 
 import argparse
 
-from commands import Commands
+from .commands import Commands
 
 
 class DEADCommand(object):

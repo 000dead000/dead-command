@@ -8,6 +8,7 @@ from .pip_dependencies import PIPDependenciesCommand
 from .update_package import UpdatePackageCommand
 from .migrations import MigrationsCommand
 
+
 class Commands(Common):
     def __init__(self, subparsers):
         """ Constructor
