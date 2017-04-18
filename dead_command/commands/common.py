@@ -10,7 +10,7 @@ class Common(object):
     DEFAULT_PORT = 9500
 
     @staticmethod
-    def get_instance_dir():
+    def get_current_dir():
         return os.getcwd()
 
     @staticmethod

@@ -3,6 +3,7 @@
 import os
 
 from .common import Common
+from .exceptions import DEADException
 
 
 class MigrationsCommand(Common):
@@ -32,9 +33,14 @@ class MigrationsCommand(Common):
         """
 
         manage = os.path.join(
-            self.get_instance_dir(),
+            self.get_current_dir(),
             "manage.py"
         )
+
+        if not os.path.isfile(manage):
+            raise DEADException({
+                "message": "manage.py is not in the current location"
+            })
 
         command_arguments = [
             "python",

@@ -20,7 +20,7 @@ class StartprojectCommand(Common):
     def __init__(self, args):
         """ Constructor
         """
-        self.DEFAULT_BASEDIR = self.get_instance_dir()
+        self.DEFAULT_BASEDIR = self.get_current_dir()
 
         self.args = args
 
