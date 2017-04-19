@@ -125,7 +125,7 @@ class StartprojectCommand(Common):
         self.bower_dependencies()
 
         if self.extra:
-            self.extra()
+            self.run_extra()
 
     def create_project_directory(self):
         """ Create the project directory
@@ -254,6 +254,6 @@ except IOError:
     def bower_dependencies(self):
         BowerDependenciesCommand(self.args).execute()
 
-    def extra(self):
+    def run_extra(self):
         MigrationsCommand(self.args).execute()
         SystemUsersCommand(self.args).execute()
