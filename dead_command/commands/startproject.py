@@ -96,6 +96,11 @@ class StartprojectCommand(Common):
                     "long_flag": "--overwrite",
                     "help": """If project directory exists, overwrite it."""
                 },
+                {
+                    "short_flag": "-e",
+                    "long_flag": "--extra",
+                    "help": """Run extra tasks like migrations and create system users."""
+                },
             ],
         }
 
