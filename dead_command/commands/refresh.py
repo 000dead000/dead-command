@@ -18,7 +18,6 @@ class RefreshCommand(Common):
         return {
             "name": "refresh",
             "description": """This command runs migrations, os_dependencies, pip_dependencies, bower_dependencies'""",
-            "arguments": [],
         }
 
     def execute(self):
