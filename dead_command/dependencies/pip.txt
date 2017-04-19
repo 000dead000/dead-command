@@ -27,3 +27,4 @@ django-crum
 
 git+https://github.com/000dead000/dead-command.git
 git+https://github.com/000dead000/dead-common.git
+git+https://github.com/000dead000/dead-js-utilities.git
