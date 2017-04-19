@@ -73,3 +73,10 @@ DEAD Command - Django Easy Applications Development
      
     dead-command.py system_users
     ```
+
+* Run refresh:
+    ```bash
+    # This command runs migrations, os_dependencies, pip_dependencies, bower_dependencies
+     
+    dead-command.py refresh
+    ```
