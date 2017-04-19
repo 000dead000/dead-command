@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import os
-
 from .common import Common
 from .os_dependencies import OSDependenciesCommand
 from .pip_dependencies import PIPDependenciesCommand
