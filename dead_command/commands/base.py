@@ -10,6 +10,7 @@ from .migrations import MigrationsCommand
 from .bower_dependencies import BowerDependenciesCommand
 from .system_users import SystemUsersCommand
 from .liveserver import LiveserverCommand
+from .refresh import RefreshCommand
 
 
 class Commands(Common):
@@ -30,6 +31,7 @@ class Commands(Common):
             BowerDependenciesCommand,
             SystemUsersCommand,
             LiveserverCommand,
+            RefreshCommand,
         ]
 
     def register_commands(self):
