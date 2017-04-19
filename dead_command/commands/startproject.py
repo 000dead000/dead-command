@@ -7,6 +7,8 @@ from .exceptions import DEADException
 from .os_dependencies import OSDependenciesCommand
 from .pip_dependencies import PIPDependenciesCommand
 from .bower_dependencies import BowerDependenciesCommand
+from .migrations import MigrationsCommand
+from .system_users import SystemUsersCommand
 
 
 class StartprojectCommand(Common):
@@ -14,6 +16,7 @@ class StartprojectCommand(Common):
     DEFAULT_NAME = "deadproject"
     DEFAULT_BASEDIR = None
     DEFAULT_OVERWRITE = False
+    DEFAULT_EXTRA = False
     DJANGO_ADMIN = "django-admin.py"
     SKELETON_REPO = "https://github.com/000dead000/dead-skeleton.git"
     DEFAULT_SLUG = "dead"
@@ -35,6 +38,7 @@ class StartprojectCommand(Common):
         self.name = None
         self.basedir = None
         self.overwrite = None
+        self.extra = None
 
         self.parse_arguments()
 
@@ -53,6 +57,10 @@ class StartprojectCommand(Common):
         # overwrite
         overwrite = getattr(self.args, "overwrite")
         self.overwrite = overwrite if overwrite else self.DEFAULT_OVERWRITE
+
+        # extra
+        extra = getattr(self.args, "extra")
+        self.extra = extra if extra else self.DEFAULT_EXTRA
 
     def validate_basedir(self):
         """ Validate base directory
@@ -110,6 +118,9 @@ class StartprojectCommand(Common):
         self.os_dependencies()
         self.pip_dependencies()
         self.bower_dependencies()
+
+        if self.extra:
+            self.extra()
 
     def create_project_directory(self):
         """ Create the project directory
@@ -237,3 +248,7 @@ except IOError:
 
     def bower_dependencies(self):
         BowerDependenciesCommand(self.args).execute()
+
+    def extra(self):
+        MigrationsCommand(self.args).execute()
+        SystemUsersCommand(self.args).execute()

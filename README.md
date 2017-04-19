@@ -16,8 +16,9 @@ DEAD Command - Django Easy Applications Development
     # -n Name of the project (default: deadproject)
     # -b Project parent directory (default: current)
     # -o Overwrite directory if exists
+    # -e Run extra tasks like migrations and create system users
      
-    dead-command.py startproject [-n PROJECT-NAME] [-b PROJECT-BASE-DIR] [-o]
+    dead-command.py startproject [-n PROJECT-NAME] [-b PROJECT-BASE-DIR] [-o] [-e]
     ```
     
     Example:
